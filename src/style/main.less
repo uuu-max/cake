@@ -1,0 +1,23 @@
+@import url('./variable.less');
+@import url('./mixin.less');
+.rec_t{
+    .p_l(16);
+    .fs(16);
+    color:#9e9e9e;    
+    .h(32);
+    .lh(32);
+}
+.rec_t::before{
+    content:'';
+    display: inline-block;
+    .w(4);
+    .h(16);
+    position: relative;  
+    background:#ef5350;
+}
+.ceil{
+    .h(25);
+    .margin(5,16,0,16);
+    border-bottom:1px solid #ccc;
+    .p_b(5);
+}
