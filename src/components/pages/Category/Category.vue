@@ -12,12 +12,10 @@
                 </ul>
             </div>
             <div class="right">
-                <div class='right-box '
-					>
                     <div class='categray-box'>
                         <div class='categrayDetail-box'>
                         	<div class='img'>
-							      <div class="i" style="background-image:url(./static/o7.jpg);background-size:100%;" ></div>
+							      <div class="i" style="background-image:url(./static/category-cake.png);background-size:100%;" ></div>
 						    </div>
                             <div class='categray-title'><span>蛋糕</span></div>
                             <div class='list-box'>
@@ -39,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
         
         </div>
         <TabBar></TabBar>
@@ -53,19 +51,19 @@ export default {
   components:{Header,TabBar},
   data(){
       return{
-           screeHeight:window.screen.height-150+"px",
+           screeHeight:window.screen.height-220+"px",
             selected:'categray1',
             index:"0",
-		selnav:[
-                {name:'玛芬蛋糕',class:'categray1'},
-                {name:'海绵蛋糕',class:'categray2'},
-                {name:'戚风蛋糕',class:'categray3'},
-                {name:'天使蛋糕',class:'categray4'},
-                {name:'重油蛋糕',class:'categray5'},
-                {name:'芝士蛋糕',class:'categray6'},
-                {name:'蒸蛋糕',class:'categray7'},
-                {name:'抹茶蛋糕',class:'categray8'},
-            ],
+            selnav:[
+                    {name:'玛芬蛋糕',class:'categray1'},
+                    {name:'海绵蛋糕',class:'categray2'},
+                    {name:'戚风蛋糕',class:'categray3'},
+                    {name:'天使蛋糕',class:'categray4'},
+                    {name:'重油蛋糕',class:'categray5'},
+                    {name:'芝士蛋糕',class:'categray6'},
+                    {name:'蒸蛋糕',class:'categray7'},
+                    {name:'抹茶蛋糕',class:'categray8'},
+                ],
             selectedList:
                  [
                     {img:"./static/o7.jpg",title:"玛芬蛋糕 16寸"},
@@ -160,27 +158,20 @@ export default {
 
          }
          .right{
-             
-             .swipter{
-                 
-             }
              .w(300);
              height:100%;
-             .right-box{
-                 overflow-y:scroll;
-                 height:100%;
-                 .categray-box{
-                     
+                   .categray-box{            
                      height:100%;
                      .categrayDetail-box{
-                        height: 100%;
-                        overflow-y: scroll;
+                        height: 100%;         
                         .fs(16);
                         .w(270); 
                         margin:0px auto;
                         .img{
                             width: 100%;
+                            .h(80);
                             .i{
+                                .h(80);
                                 width: 100%;
                             }
 				    	}
@@ -200,11 +191,8 @@ export default {
                             margin:0px 15px;
                             background:#979797;
 					    }
-                        	.list-box{
-                                 
-                                width: 100%;
-                            
-                                 
+                        	.list-box{                           
+                                width: 100%;                                 
                                 }
                                 .swiper{
                                     .w(270); 
@@ -217,10 +205,9 @@ export default {
                                         .w(90);
                                         .h(110);
                                         .p_b(10);
-                                        // background: blue;
+                                        
                                         display: flex;
                                         flex-direction:column;
-                                    // justify-content: space-between;
                                         align-items: center;
                                         .im{
                                             .w(65);
@@ -235,7 +222,7 @@ export default {
                          
                      }
                  }
-             }
+             
              
     }
      

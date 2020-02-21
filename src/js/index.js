@@ -6,7 +6,12 @@ import { Toast } from 'vant';
 import { AddressEdit,Area  } from 'vant';
 import { GoodsAction, GoodsActionIcon, GoodsActionButton, Sku } from 'vant';
 import { ContactCard, ContactList, ContactEdit } from 'vant';
-
+import { NavBar } from 'vant';
+import { Search } from 'vant';
+import { Tabbar, TabbarItem } from 'vant';
+Vue.use(Tabbar).use(TabbarItem);
+Vue.use(Search);
+Vue.use(NavBar);
 Vue.use(ContactCard);
 Vue.use(ContactList);
 Vue.use(ContactEdit);
