@@ -17,9 +17,7 @@
 <script>
 import Header from 'common/Header'
 import Vue from 'vue';
-import { Toast } from 'vant';
-import { AddressEdit,Area  } from 'vant';
-Vue.use(AddressEdit).use(Area);
+
 export default {
     name:'Address',
      components:{Header},

@@ -37,14 +37,8 @@
 <script>
 import {mapActions} from 'vuex'
 import Header from 'common/Header'
-import Vue from 'vue';
-import { GoodsAction, GoodsActionIcon, GoodsActionButton, Sku } from 'vant';
-import { Toast } from 'vant';
-Vue.use(GoodsAction);
-Vue.use(GoodsActionButton);
-Vue.use(GoodsActionIcon);
-Vue.use(Sku);
-Vue.use(Toast);
+
+
 export default {
     name:"ProductDetail",
     components:{Header},
