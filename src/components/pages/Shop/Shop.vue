@@ -83,9 +83,7 @@ import { mapState, mapGetters ,mapActions} from "vuex";
 import Header from 'common/Header'
 import TabBar from 'common/TabBar'
 import Vue from 'vue';
-import { Card ,Checkbox, CheckboxGroup,SubmitBar } from 'vant';
 
-Vue.use(Card).use(Checkbox).use(CheckboxGroup).use(SubmitBar);
 export default {
     name:'Shop',
      components:{Header,TabBar},

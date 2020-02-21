@@ -161,9 +161,7 @@ import search from 'common/Search'
 import banner from './banner'
 import list from 'common/List'
 import Vue from 'vue';
-import { Icon,Swipe, SwipeItem  } from 'vant';
 
-Vue.use(Icon).use(SwipeItem).use(Swipe);
 export default {
     name:'Index',
     components:{tabbar,search,banner,list},

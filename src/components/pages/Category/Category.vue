@@ -5,26 +5,35 @@
             <div class="left">
                 <ul>
                     <li v-for="(item, index) in selnav" :key="index"
-                    	@click='sel(item.class)'
+                    	@click='sel(item.class,index)'
                         :class="selected==item.class?'navsel':''">
                     {{item.name}}
                     </li>
                 </ul>
             </div>
             <div class="right">
-                <div class='right-box animated '
-					:class="selected">
-                    <div class='categray-box' v-for='(item,index) in selnav'>
+                <div class='right-box '
+					>
+                    <div class='categray-box'>
                         <div class='categrayDetail-box'>
                         	<div class='img'>
 							      <div class="i" style="background-image:url(./static/o7.jpg);background-size:100%;" ></div>
 						    </div>
                             <div class='categray-title'><span>蛋糕</span></div>
                             <div class='list-box'>
-                                <div v-for='item in 22' @click='goDetail(item)'>
-                                    <div class="im" style="background-image:url(./static/o2.jpg);background-size:100%;" ></div>
-                                    <span>顶级好蛋糕 16寸</span>
-                                </div>
+                              <!--  <div v-for='item in selectedList' @click='goDetail(item)'>
+                                    <img class="im" :src="item.img" ></img>
+                                    <span>{{item.title}}</span>
+                                </div>-->
+                                <van-swipe  vertical class="swiper" ref="swiper" :style="'height:'+screeHeight" :loop="false"  @change="onChange" :show-indicators="false">
+                                    <van-swipe-item class="x"  v-for="item in selnav" :key="item.id" >
+                                    <div v-for='item in selectedList' :key="item.id">
+                                       <img class="im" :src="item.img" ></img>
+                                        <span>{{item.title}}</span> 
+                                    </div>
+                                    </van-swipe-item>
+                                   
+                                </van-swipe>
                                 
 							</div>
                         </div>
@@ -44,8 +53,10 @@ export default {
   components:{Header,TabBar},
   data(){
       return{
-          selected:'categray1',
-			selnav:[
+           screeHeight:window.screen.height-150+"px",
+            selected:'categray1',
+            index:"0",
+		selnav:[
                 {name:'玛芬蛋糕',class:'categray1'},
                 {name:'海绵蛋糕',class:'categray2'},
                 {name:'戚风蛋糕',class:'categray3'},
@@ -54,16 +65,67 @@ export default {
                 {name:'芝士蛋糕',class:'categray6'},
                 {name:'蒸蛋糕',class:'categray7'},
                 {name:'抹茶蛋糕',class:'categray8'},
+            ],
+            selectedList:
+                 [
+                    {img:"./static/o7.jpg",title:"玛芬蛋糕 16寸"},
+                    {img:"./static/o7.jpg",title:"玛芬蛋糕 18寸"}
+                ]
+            ,
+            list:[
+                [
+                    {img:"./static/o7.jpg",title:"玛芬蛋糕 16寸"},
+                    {img:"./static/o7.jpg",title:"玛芬蛋糕 18寸"}
+                ],
+                
+                 [
+                    {img:"./static/o5.jpg",title:"海绵蛋糕 16寸"},
+                    {img:"./static/o5.jpg",title:"海绵蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o4.jpg",title:"戚风蛋糕 16寸"},
+                    {img:"./static/o4.jpg",title:"戚风蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o8.jpg",title:"天使蛋糕 16寸"},
+                    {img:"./static/o8.jpg",title:"天使蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o6.jpg",title:"重油蛋糕 16寸"},
+                    {img:"./static/o6.jpg",title:"重油蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o2.jpg",title:"芝士蛋糕 16寸"},
+                    {img:"./static/o2.jpg",title:"芝士蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o3.jpg",title:"蒸蛋糕 16寸"},
+                    {img:"./static/o3.jpg",title:"蒸蛋糕 18寸"}
+                ],
+                 [
+                    {img:"./static/o1.jpg",title:"抹茶蛋糕 16寸"},
+                    {img:"./static/o1.jpg",title:"抹茶蛋糕 18寸"}
+                ]
+
+
             ]
+
+            
       }
   },
   	methods:{
-		sel(item){
-			this.selected=item
+		sel(item,index){
+			this.selected=item;
+            this.selectedList=this.list[index];
+            this.index=index;
+            this.$refs.swiper.swipeTo(this.index)
+           
 		},
-		goDetail(item){
-			//this.$router.push({path:'goodsdetail/123'})
-		}
+         onChange(index) {
+             this.index=index;
+            this.selected=this.selnav[index].class;
+             this.selectedList=this.list[index]
+        }
 	}
 }
 </script>
@@ -98,11 +160,17 @@ export default {
 
          }
          .right{
+             
+             .swipter{
+                 
+             }
              .w(300);
              height:100%;
              .right-box{
+                 overflow-y:scroll;
                  height:100%;
                  .categray-box{
+                     
                      height:100%;
                      .categrayDetail-box{
                         height: 100%;
@@ -135,57 +203,40 @@ export default {
                         	.list-box{
                                  
                                 width: 100%;
-                                display: flex;
-                                flex-wrap:wrap;
-                                align-content: flex-start;
-                                div{
-                                    .w(90);
-                                    .h(110);
-                                    .p_b(10);
-                                    // background: blue;
-                                    display: flex;
-                                    flex-direction:column;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                    .im{
-                                        .w(65);
+                            
+                                 
+                                }
+                                .swiper{
+                                    .w(270); 
+                                }
+                                 .van-swipe-item{
+                                        display: flex;
+                                        flex-wrap:wrap;
+                                        align-content: flex-start; 
+                                    div{
+                                        .w(90);
+                                        .h(110);
+                                        .p_b(10);
+                                        // background: blue;
+                                        display: flex;
+                                        flex-direction:column;
+                                    // justify-content: space-between;
+                                        align-items: center;
+                                        .im{
+                                            .w(65);
+                                            background-size:100%;
+                                        }
+                                        span{
+                                            .fs(14);
+                                            text-align: center;
+                                        }
                                     }
-                                    span{
-                                        .fs(14);
-                                        text-align: center;
-                                    }
-					        	}
-                            }
+                                }
+                         
                      }
                  }
              }
-                 .animated{
-				transition: all 500ms ease-in-out;
-		}
-        .categray1{
-				transform:translate(0,0%);
-        }
-        .categray2{
-            transform:translate(0,-100%);
-        }
-        .categray3{
-            transform:translate(0,-200%);
-        }
-        .categray4{
-            transform:translate(0,-300%);
-        }
-        .categray5{
-            transform:translate(0,-400%);
-        }
-        .categray6{
-            transform:translate(0,-500%);
-        }
-        .categray7{
-            transform:translate(0,-600%);
-        }
-        .categray8{
-            transform:translate(0,-700%);
-        }
+             
     }
      
     }
